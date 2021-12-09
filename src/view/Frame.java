@@ -10,32 +10,38 @@ public class Frame extends JFrame{
         //public STATE state = STATE.MENU;
         public CheckerBoard cb;
         //public Menu menu;
-        public JPanel cards;
-
+        public JPanel cards =new JPanel();
+        public JPanel game = new JPanel();
+        public JPanel menu = new JPanel();
+        public JButton newGameButton = new JButton("New Game");
+        public JButton quitButton = new JButton("Quit");
+        public CardLayout c1 = new CardLayout();
 
         public Frame(Game g, Controller c){
 
             //super();
-            JPanel menu = new JPanel();
-            JButton newGameButton = new JButton("New Game");
-            JButton quitButton = new JButton("Quit");
-            newGameButton.addActionListener(e -> {dispose();});
-            quitButton.addActionListener(e -> {dispose();});
-            menu.add(newGameButton);
-            menu.add(quitButton);
 
-            JPanel game = new JPanel();
             cb = new CheckerBoard();
             cb.setGame(g);
             cb.addMouseListener(c);
-            getContentPane().add(cb);
+
+            cards.setLayout(c1);
+
+            menu.add(newGameButton);
+            menu.add(quitButton);
             game.add(cb);
 
-            cards = new JPanel(new CardLayout());
-            cards.add(menu);
-            cards.add(game);
-            add(cards);
+            cards.add(menu,"MENU");
+            cards.add(game,"GAME");
 
+            c1.show(cards,"GAME");
+
+
+            quitButton.addActionListener(e -> {dispose();});
+            newGameButton.addActionListener(e -> { c1.show(cards,"GAME");});
+
+            add(cards);
+            pack();
             setSize(800,800);
             setTitle("Checkers");
             setLocationRelativeTo(null);
