@@ -12,6 +12,7 @@ public class CheckerBoard extends JComponent {
 
     @Override
     public void paint(Graphics g) {
+        System.out.println("KIRAJZOLVA");
 
         Image crown;
 

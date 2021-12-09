@@ -1,6 +1,8 @@
 package model;
 
-public class Piece {
+import java.io.Serializable;
+
+public class Piece implements Serializable {
     int x;
     int y;
     private Colour color;      //FEHÉR=0 PIROS=1

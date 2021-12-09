@@ -3,39 +3,32 @@ package controller;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import model.Colour;
 import model.Game;
 import model.Piece;
 import view.Frame;
-import view.STATE;
 
 public class Controller implements MouseListener {
-    Game game;
+    public Game game;
     Frame frame;
     Piece current;
     public Controller(){
-        game = new Game();
         frame = new Frame(game,this);
     }
 
     @Override
     public void mouseClicked(MouseEvent e) {
-        /*
-        if(frame.state==STATE.MENU){
-            if(e.getX()>250&&e.getX()<550){
-               if(e.getY()>100&&e.getY()<200)
-                    frame.state=STATE.GAME;
-                    frame.update();
-            }
-
-        }*/
-        //if(frame.state==STATE.GAME) {
             int clickedOnX = (e.getX() - (e.getX() % 94)) / 94;
             int clickedOnY = (e.getY() - (e.getY() % 94)) / 94;
             if (game.board[clickedOnY][clickedOnX] == null) {
                 if (current != null) {
                     try {
-                        if (game.Move(current.getX(), current.getY(), clickedOnX, clickedOnY)) ;
-                        current = null;
+                        if (game.Move(current.getX(), current.getY(), clickedOnX, clickedOnY)){
+                            current = null;
+                            if(game.countPieces(Colour.WHITE)==0||game.countPieces(Colour.RED)==0){
+                                frame.c1.show(frame.cards, "MENU");
+                            }
+                        }
                     } catch (NullPointerException npe) {
                         System.out.println("ROSSZ LÉPÉS");
                     }
@@ -52,7 +45,6 @@ public class Controller implements MouseListener {
                 //Erronál ford x--y
                 //VALID LÉPÉSEK ZÖLDDEL
             }
-        //}
     }
 
 

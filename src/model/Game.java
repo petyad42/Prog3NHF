@@ -1,6 +1,8 @@
 package model;
 
-public class Game {
+import java.io.*;
+
+public class Game implements Serializable { //TODO: VIZSGÁK UTÁN JSON
     public Piece[][] board = new Piece[8][8];
     private Colour whosTurn;
 
@@ -20,8 +22,6 @@ public class Game {
             Status();
 
     }
-    //ITT KELL LE ELENNŐRIZNI HOGY VALID MOVE-E
-
 
     public boolean Move(int fromX, int fromY,int toX,int toY)throws NullPointerException{
         if(isValidMove(fromX, fromY, toX, toY)){
@@ -41,6 +41,9 @@ public class Game {
                 whosTurn = Colour.WHITE;
             }
             Status();
+
+
+
             return true;
         }
         return false;
@@ -133,5 +136,35 @@ public class Game {
             }
         }
         return sum;
+    }
+
+    public void save(String path){
+        FileOutputStream f = null;
+        try {
+            f = new FileOutputStream(path);
+            ObjectOutputStream out = new ObjectOutputStream(f);
+            out.writeObject(board);
+            out.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+    public void load(File input){
+        {
+
+            try { FileInputStream f = new FileInputStream(input);
+                ObjectInputStream in = null;
+                in = new ObjectInputStream(f);
+                board = (Piece[][]) in.readObject();
+                in.close();
+            } catch (IOException | ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+
+
+        }
     }
 }
