@@ -12,12 +12,8 @@ public class CheckerBoard extends JComponent {
 
     @Override
     public void paint(Graphics g) {
-        System.out.println("KIRAJZOLVA");
-
         Image crown;
-
         crown = Toolkit.getDefaultToolkit().getImage("E:/BME/III/Prog3/NHF_reloaded/res/crown.png");
-
 
         for(int i =0;i<8;i++)
         {

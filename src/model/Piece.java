@@ -30,7 +30,10 @@ public class Piece implements Serializable {
     }
 
     public boolean isKing() {
-        return king;
+        if(this!=null)
+            return king;
+        else
+            return false;
     }
 
     public int getRow(){
@@ -57,13 +60,4 @@ public class Piece implements Serializable {
         this.y = y;
     }
 
-    @Override
-    public String toString() {
-        return "Piece{" +
-                "x=" + x +
-                ", y=" + y +
-                ", color=" + color +
-                ", king=" + king +
-                '}';
-    }
 }

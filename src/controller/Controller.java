@@ -47,23 +47,34 @@ public class Controller implements MouseListener {
             }
     }
 
-
-
+    /**
+     * NEM HASZNALT FUGGVENY
+     * @param e
+     */
     @Override
     public void mousePressed(MouseEvent e) {
 
     }
-
+    /**
+     * NEM HASZNALT FUGGVENY
+     * @param e
+     */
     @Override
     public void mouseReleased(MouseEvent e) {
 
     }
-
+    /**
+     * NEM HASZNALT FUGGVENY
+     * @param e
+     */
     @Override
     public void mouseEntered(MouseEvent e) {
 
     }
-
+    /**
+     * NEM HASZNALT FUGGVENY
+     * @param e
+     */
     @Override
     public void mouseExited(MouseEvent e) {
 

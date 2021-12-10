@@ -20,7 +20,6 @@ public class Game implements Serializable { //TODO: VIZSGÁK UTÁN JSON
                 }
             }
             Status();
-
     }
 
     public boolean Move(int fromX, int fromY,int toX,int toY)throws NullPointerException{
@@ -41,9 +40,6 @@ public class Game implements Serializable { //TODO: VIZSGÁK UTÁN JSON
                 whosTurn = Colour.WHITE;
             }
             Status();
-
-
-
             return true;
         }
         return false;
@@ -81,7 +77,6 @@ public class Game implements Serializable { //TODO: VIZSGÁK UTÁN JSON
                     return false;
                 }
             }
-
             else if(whosTurn==Colour.RED) {
                 if (Math.abs(fromX - toX) == 2 && toY - fromY == 2&&board[fromY+1][(fromX+toX)/2]!=null
                         &&board[fromY+1][(fromX+toX)/2].getColor()==Colour.WHITE) {
@@ -99,7 +94,6 @@ public class Game implements Serializable { //TODO: VIZSGÁK UTÁN JSON
             }
 
         }
-
         System.out.println("NEM ÉRVÉNYES LÉPÉS!");
         board[fromY][fromX].setSelected(false);
         return false;
@@ -150,11 +144,9 @@ public class Game implements Serializable { //TODO: VIZSGÁK UTÁN JSON
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
     public void load(File input){
         {
-
             try { FileInputStream f = new FileInputStream(input);
                 ObjectInputStream in = null;
                 in = new ObjectInputStream(f);
@@ -163,8 +155,6 @@ public class Game implements Serializable { //TODO: VIZSGÁK UTÁN JSON
             } catch (IOException | ClassNotFoundException e) {
                 e.printStackTrace();
             }
-
-
         }
     }
 }
