@@ -48,4 +48,14 @@ class GameTest {
         Assert.assertEquals(12,g.countPieces(Colour.WHITE));
         Assert.assertEquals(12,g.countPieces(Colour.RED));
     }
+    @Test
+    void kill(){
+        g.Move(0,5,1,4);
+        g.Move(3,2,2,3);
+        int targetX=g.board[3][2].getX();
+        int targetY=g.board[3][2].getY();
+        g.Move(1,4,3,2);
+        assertEquals(null,g.board[3][2]);
+
+    }
 }

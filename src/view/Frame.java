@@ -7,6 +7,9 @@ import model.Game;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Ablak kezelő oszály
+ */
 public class Frame extends JFrame{ //TODO: NORMÁLIS MÉRETEZÉS
         public CheckerBoard cb;
         public JPanel cards =new JPanel();
@@ -15,7 +18,13 @@ public class Frame extends JFrame{ //TODO: NORMÁLIS MÉRETEZÉS
         public JButton quitButton = new JButton("Quit");
         public CardLayout c1 = new CardLayout();
 
-        public Frame(Game g, Controller c){
+    /**
+     * Konstruktor, ablak létrehozásakor fut le.
+     * Card layouttal vált a különböző állapotok között, ami a játék és a menü
+     * @param g Ablakhoz tartozó játék osztály
+     * @param c Ablakot irányító kontroller osztály
+     */
+    public Frame(Game g, Controller c){
             super();
 
             cb = new CheckerBoard();
@@ -78,7 +87,11 @@ public class Frame extends JFrame{ //TODO: NORMÁLIS MÉRETEZÉS
 
             setVisible(true);
         }
-        public void update(){
+
+    /**
+     * Az ablak frissítéséhez kell, változáskor
+     */
+    public void update(){
             cb.repaint();
         }
 }

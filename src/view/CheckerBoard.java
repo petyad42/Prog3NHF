@@ -6,10 +6,17 @@ import model.Game;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Sakk táblát megjelenítő osztály
+ */
 public class CheckerBoard extends JComponent {
     private int boxSize=94;
     private Game game;
 
+    /**
+     * Kirajzoló függvény
+     * @param g
+     */
     @Override
     public void paint(Graphics g) {
         Image crown;
@@ -50,6 +57,10 @@ public class CheckerBoard extends JComponent {
 
     }
 
+    /**
+     * GameSetter beállítja a játékot
+     * @param game paraméterbe átadott játék
+     */
     public void setGame(Game game) {
         this.game = game;
     }
